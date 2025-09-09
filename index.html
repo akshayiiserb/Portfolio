@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshay Tiwari - Founder @ PREP4IISER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0a0a0a;
+            --accent-blue: #00c2ff;
+            --accent-purple: #a032f4;
+            --accent-pink: #ff3bca;
+            --glass-bg: rgba(20, 20, 30, 0.5);
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(315deg, 
+                var(--accent-blue), 
+                var(--dark-bg) 35%, 
+                var(--dark-bg) 65%, 
+                var(--accent-purple));
+            background-size: 200% 200%;
+            animation: gradient-flow 15s ease infinite;
+            z-index: -2;
+        }
+        
+        /* Grid Overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Effect */
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Glowing Gradient Text */
+        .gradient-text-animated {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue), var(--accent-purple), var(--accent-pink));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shine 5s linear infinite;
+        }
+
+        @keyframes text-shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-bg); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--accent-blue), var(--accent-purple));
+            border-radius: 4px;
+        }
+
+        /* Section Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glowing Hover Card */
+        .glowing-card {
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glowing-card::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px;
+            right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .glowing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 194, 255, 0.3), 0 0 40px rgba(160, 50, 244, 0.3);
+        }
+        .glowing-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Shimmer Button */
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: rotate(45deg);
+            transition: left 0.8s ease, top 0.8s ease;
+            opacity: 0;
+        }
+        .shimmer-btn:hover::after {
+            opacity: 1;
+            animation: shimmer 1.5s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        /* Interactive blob */
+        #blob {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            height: 250px;
+            width: 250px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: rotate-blob 20s infinite;
+            filter: blur(100px);
+            z-index: -3;
+            opacity: 0.4;
+        }
+        @keyframes rotate-blob {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+    </style>
+</head>
+
+<body class="text-gray-200">
+    <div id="blob"></div>
+    <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full z-[-2]"></canvas>
+
+    <!-- Header -->
+    <header id="header" class="glass-effect sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text-animated">Akshay Tiwari</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#summary" class="text-gray-300 hover:text-white transition duration-300 magnetic-item">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-white transition duration-300 magnetic-item">Experience</a>
+                <a href="#education" class="text-gray-300 hover:text-white transition duration-300 magnetic-item">Education</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition duration-300 magnetic-item">Skills</a>
+                <a href="#contact" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 shimmer-btn magnetic-item">Contact Me</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 glass-effect">
+            <a href="#summary" class="block py-2 text-gray-300 hover:text-white">About</a>
+            <a href="#experience" class="block py-2 text-gray-300 hover:text-white">Experience</a>
+            <a href="#education" class="block py-2 text-gray-300 hover:text-white">Education</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-white">Skills</a>
+            <a href="#contact" class="block mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full text-center">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 relative z-10">
+
+        <!-- Hero/Summary Section -->
+        <section id="summary" class="flex flex-col md:flex-row items-center min-h-[calc(100vh-80px)] mb-20 reveal">
+            <div class="md:w-3/5 text-center md:text-left">
+                <span class="text-lg font-semibold text-blue-400 font-sans">Akshay Tiwari</span>
+                <h1 id="hero-title" class="text-4xl md:text-6xl gradient-text-animated mt-2 mb-4 leading-tight min-h-[144px] md:min-h-[192px]"></h1>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto md:mx-0 text-lg">
+                    Driven by curiosity and a passion for scientific discovery, I'm building communities and leveraging my analytical skills to solve real-world challenges.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shimmer-btn magnetic-item">Get In Touch</a>
+                    <a href="https://www.linkedin.com/in/akshay-tiwari-8b17542b1" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-full border border-white/20 transition duration-300 transform hover:scale-105 magnetic-item">View LinkedIn</a>
+                </div>
+            </div>
+            <div class="md:w-2/5 flex justify-center mt-12 md:mt-0">
+                 <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+                    <img src="https://placehold.co/400x400/0a0a0a/ffffff?text=AT" alt="Akshay Tiwari" class="relative w-full h-full object-cover rounded-full shadow-2xl border-4 border-white/10">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="mb-28 reveal">
+             <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold gradient-text-animated">About Me</h2>
+                <p class="text-gray-400 mt-2">A little more about my journey and aspirations.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-effect p-8 rounded-2xl glowing-card">
+                    <h3 class="font-bold text-2xl mb-4 text-blue-400 flex items-center"><i class="fas fa-rocket mr-3"></i>Research Profile</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        As a science undergraduate at IISER Bhopal, I'm driven by a deep interest in Chemistry, Mathematics, and Engineering. My goal is a career in research and higher education, fueled by curiosity and logical reasoning. Founding Prep4IISER has honed my skills in teaching and mentorship, and I am eager to contribute to research-driven environments and pursue a PhD.
+                    </p>
+                </div>
+                 <div class="glass-effect p-8 rounded-2xl glowing-card">
+                    <h3 class="font-bold text-2xl mb-4 text-purple-400 flex items-center"><i class="fas fa-briefcase mr-3"></i>Professional Profile</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                         I am a motivated student with expertise in analytical problem-solving, strategic planning, and team leadership. My work with Prep4IISER sharpened my ability to design strategies, lead teams, and manage operations. I aim to apply my academic strength and leadership experience to professional opportunities where I can create value and make a measurable impact.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-28 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold gradient-text-animated">Professional Experience</h2>
+                <p class="text-gray-400 mt-2">My professional journey and key contributions.</p>
+            </div>
+            <div class="relative pl-8 border-l-2 border-white/10">
+                <div class="absolute w-full h-full top-0 left-0">
+                    <div class="absolute h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-500" style="animation: fill-timeline 5s linear forwards;"></div>
+                </div>
+                <!-- PREP4IISER -->
+                <div class="mb-12 relative">
+                    <div class="absolute -left-4 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white ring-8 ring-dark-bg">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="glass-effect p-6 rounded-lg ml-8 glowing-card">
+                        <p class="text-sm text-gray-400">Nov 2024 - Present</p>
+                        <h3 class="text-2xl font-bold mt-1">Founder</h3>
+                        <p class="text-lg font-semibold text-gray-300">PREP4IISER, India</p>
+                    </div>
+                </div>
+                <!-- Photography Club -->
+                <div class="mb-12 relative">
+                    <div class="absolute -left-4 top-1 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white ring-8 ring-dark-bg">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <div class="glass-effect p-6 rounded-lg ml-8 glowing-card">
+                        <p class="text-sm text-gray-400">Oct 2024 - Present</p>
+                        <h3 class="text-2xl font-bold mt-1">Core Committee Member</h3>
+                        <p class="text-lg font-semibold text-gray-300">Photography Club, IISER Bhopal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mb-28 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold gradient-text-animated">Education</h2>
+                <p class="text-gray-400 mt-2">My academic background and qualifications.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-effect p-6 rounded-lg glowing-card">
+                    <p class="text-sm text-gray-400">2023 - 2027</p>
+                    <h3 class="text-xl font-bold mt-1">Bachelor of Science - BS</h3>
+                    <p class="text-md font-semibold text-blue-400">Electrical & Computer Science Engineering</p>
+                    <p class="text-gray-300">IISER Bhopal</p>
+                </div>
+                <div class="glass-effect p-6 rounded-lg glowing-card">
+                     <p class="text-sm text-gray-400">2022 - 2025</p>
+                    <h3 class="text-xl font-bold mt-1">Bachelor of Computer Applications</h3>
+                    <p class="text-md font-semibold text-blue-400">Computer Applications</p>
+                    <p class="text-gray-300">Nalanda Open University, Patna</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-28 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold gradient-text-animated">Core Competencies</h2>
+                <p class="text-gray-400 mt-2">Key skills and areas of expertise.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Business Analysis</span>
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">C (Programming)</span>
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Leadership</span>
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Problem Solving</span>
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Project Execution</span>
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Communication</span>
+                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Mentorship</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact" class="bg-black/30 text-white mt-20 reveal">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center mb-10">
+                 <h2 class="text-4xl font-bold gradient-text-animated">Contact Me</h2>
+                 <p class="text-gray-400 mt-2">Feel free to reach out. Let's create something amazing!</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
+                 <div class="flex items-center space-x-3 glass-effect py-3 px-5 rounded-lg">
+                    <i class="fas fa-envelope text-2xl text-blue-400"></i>
+                    <a href="mailto:akshaytiwaari11@gmail.com" class="hover:text-blue-300 transition-colors">akshaytiwaari11@gmail.com</a>
+                </div>
+                <div class="flex items-center space-x-3 glass-effect py-3 px-5 rounded-lg">
+                    <i class="fas fa-phone text-2xl text-blue-400"></i>
+                    <span>9473096101</span>
+                </div>
+            </div>
+             <div class="flex justify-center space-x-6 mt-10">
+                <a href="https://www.linkedin.com/in/akshay-tiwari-8b17542b1" target="_blank" class="text-gray-400 hover:text-white text-3xl transition-transform duration-300 hover:scale-125"><i class="fab fa-linkedin"></i></a>
+                <a href="https://play.google.com/store/apps/details" target="_blank" class="text-gray-400 hover:text-white text-3xl transition-transform duration-300 hover:scale-125"><i class="fab fa-google-play"></i></a>
+            </div>
+            <div class="text-center text-gray-500 mt-12 border-t border-white/10 pt-6">
+                <p>&copy; 2025 Akshay Tiwari. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- Interactive Blob ---
+        const blob = document.getElementById("blob");
+        window.onpointermove = event => {
+            const { clientX, clientY } = event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 3000, fill: "forwards" });
+        };
+
+        // --- Particle Canvas ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 0.5;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * .4) - .2;
+                let directionY = (Math.random() * .4) - .2;
+                particlesArray.push(new Particle(x, y, directionX, directionY, size));
+            }
+        }
+        
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+        }
+
+        initParticles();
+        animateParticles();
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            initParticles();
+        });
+
+        // --- Typing Animation ---
+        const heroTitle = document.getElementById('hero-title');
+        const textToType = "Founder @ PREP4IISER <br>& Science Undergraduate";
+        let charIndex = 0;
+        function type() {
+            if (charIndex < textToType.length) {
+                if(textToType.substring(charIndex, charIndex+4) === '<br>'){
+                    heroTitle.innerHTML += '<br>';
+                    charIndex += 4;
+                } else {
+                    heroTitle.innerHTML += textToType.charAt(charIndex);
+                    charIndex++;
+                }
+                setTimeout(type, 50);
+            }
+        }
+        type();
+
+        // --- Reveal on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // --- Magnetic Buttons ---
+        const magneticItems = document.querySelectorAll('.magnetic-item');
+        magneticItems.forEach(item => {
+            item.addEventListener('mousemove', function(e) {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                item.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+            });
+            item.addEventListener('mouseleave', function() {
+                item.style.transform = 'translate(0,0)';
+            });
+        });
+
+        // --- Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    });
+    </script>
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
