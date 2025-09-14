@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Untitled</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -44,16 +34,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(315deg, 
-                var(--accent-blue), 
-                var(--dark-bg) 35%, 
-                var(--dark-bg) 65%, 
-                var(--accent-purple));
+            background: linear-gradient(315deg,
+                    var(--accent-blue),
+                    var(--dark-bg) 35%,
+                    var(--dark-bg) 65%,
+                    var(--accent-purple));
             background-size: 200% 200%;
             animation: gradient-flow 15s ease infinite;
             z-index: -2;
         }
-        
+
         /* Grid Overlay */
         body::after {
             content: '';
@@ -63,7 +53,7 @@
             width: 100%;
             height: 100%;
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
             opacity: 0.5;
@@ -133,6 +123,7 @@
             z-index: -1;
             opacity: 0;
             transition: opacity 0.4s ease;
+            filter: blur(5px);
         }
         .glowing-card:hover {
             transform: translateY(-5px);
@@ -171,11 +162,9 @@
         /* Interactive blob */
         #blob {
             background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-            height: 250px;
-            width: 250px;
+            height: 250px; width: 250px;
             position: fixed;
-            left: 50%;
-            top: 50%;
+            left: 50%; top: 50%;
             transform: translate(-50%, -50%);
             border-radius: 50%;
             animation: rotate-blob 20s infinite;
@@ -188,6 +177,32 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
+        /* Improved Skill Tag Hover Effect */
+        .skill-tag {
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .skill-tag:hover::before {
+            opacity: 1;
+        }
+
     </style>
 </head>
 
@@ -195,7 +210,6 @@
     <div id="blob"></div>
     <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full z-[-2]"></canvas>
 
-    <!-- Header -->
     <header id="header" class="glass-effect sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold gradient-text-animated">Akshay Tiwari</a>
@@ -219,16 +233,14 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 relative z-10">
 
-        <!-- Hero/Summary Section -->
         <section id="summary" class="flex flex-col md:flex-row items-center min-h-[calc(100vh-80px)] mb-20 reveal">
             <div class="md:w-3/5 text-center md:text-left">
                 <span class="text-lg font-semibold text-blue-400 font-sans">Akshay Tiwari</span>
                 <h1 id="hero-title" class="text-4xl md:text-6xl gradient-text-animated mt-2 mb-4 leading-tight min-h-[144px] md:min-h-[192px]"></h1>
                 <p class="text-gray-400 mb-8 max-w-xl mx-auto md:mx-0 text-lg">
-                    Driven by curiosity and a passion for scientific discovery, I'm building communities and leveraging my analytical skills to solve real-world challenges.
+                    An innovator and educator at the intersection of science and technology. I build communities and leverage my analytical skills to solve real-world challenges.
                 </p>
                 <div class="flex justify-center md:justify-start space-x-4">
                     <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shimmer-btn magnetic-item">Get In Touch</a>
@@ -236,63 +248,56 @@
                 </div>
             </div>
             <div class="md:w-2/5 flex justify-center mt-12 md:mt-0">
-                 <div class="relative w-72 h-72 md:w-96 md:h-96">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-50 animate-pulse"></div>
-                    <img src="Ak.png" alt="Akshay Tiwari" class="relative w-full h-full object-cover rounded-full shadow-2xl border-4 border-white/10">
-                </div>
+                   <div class="relative w-72 h-72 md:w-96 md:h-96">
+                       <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+                       <img src="https://www.prep4iiser.com/img/mentors/akshay.jpeg" alt="Akshay Tiwari" class="relative w-full h-full object-cover rounded-full shadow-2xl border-4 border-white/10">
+                   </div>
             </div>
         </section>
 
-        <!-- About Me Section -->
         <section id="about" class="mb-28 reveal">
              <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold gradient-text-animated">About Me</h2>
-                <p class="text-gray-400 mt-2">A little more about my journey and aspirations.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-effect p-8 rounded-2xl glowing-card">
-                    <h3 class="font-bold text-2xl mb-4 text-blue-400 flex items-center"><i class="fas fa-rocket mr-3"></i>Research Profile</h3>
-                    <p class="text-gray-300 leading-relaxed">
-                        As a science undergraduate at IISER Bhopal, I'm driven by a deep interest in Chemistry, Mathematics, and Engineering. My goal is a career in research and higher education, fueled by curiosity and logical reasoning. Founding Prep4IISER has honed my skills in teaching and mentorship, and I am eager to contribute to research-driven environments and pursue a PhD.
-                    </p>
-                </div>
+                 <h2 class="text-4xl font-bold gradient-text-animated">About Me</h2>
+                 <p class="text-gray-400 mt-2">My journey, aspirations, and professional ethos.</p>
+             </div>
+             <div class="grid md:grid-cols-2 gap-8">
                  <div class="glass-effect p-8 rounded-2xl glowing-card">
-                    <h3 class="font-bold text-2xl mb-4 text-purple-400 flex items-center"><i class="fas fa-briefcase mr-3"></i>Professional Profile</h3>
-                    <p class="text-gray-300 leading-relaxed">
-                         I am a motivated student with expertise in analytical problem-solving, strategic planning, and team leadership. My work with Prep4IISER sharpened my ability to design strategies, lead teams, and manage operations. I aim to apply my academic strength and leadership experience to professional opportunities where I can create value and make a measurable impact.
-                    </p>
-                </div>
-            </div>
+                     <h3 class="font-bold text-2xl mb-4 text-blue-400 flex items-center"><i class="fas fa-rocket mr-3"></i>Research Profile</h3>
+                     <p class="text-gray-300 leading-relaxed">
+                        As a science undergraduate at IISER Bhopal, my passion lies at the confluence of Chemistry, Mathematics, and Engineering. My ambition is a career in research and higher education, driven by deep-seated curiosity and rigorous logical reasoning. My experience founding Prep4IISER has sharpened my teaching and mentorship skills, and I am actively seeking to contribute to research-driven environments and pursue a PhD.
+                     </p>
+                 </div>
+                  <div class="glass-effect p-8 rounded-2xl glowing-card">
+                     <h3 class="font-bold text-2xl mb-4 text-purple-400 flex items-center"><i class="fas fa-briefcase mr-3"></i>Professional Profile</h3>
+                     <p class="text-gray-300 leading-relaxed">
+                        I am a highly motivated student with proven expertise in analytical problem-solving, strategic planning, and team leadership. Leading Prep4IISER enhanced my ability to design effective strategies, guide teams, and manage operations. I am eager to apply my academic rigor and leadership experience to professional opportunities where I can create significant value and drive measurable impact.
+                     </p>
+                 </div>
+             </div>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience" class="mb-28 reveal">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold gradient-text-animated">Professional Experience</h2>
                 <p class="text-gray-400 mt-2">My professional journey and key contributions.</p>
             </div>
             <div class="relative pl-8 border-l-2 border-white/10">
-                <div class="absolute w-full h-full top-0 left-0">
-                    <div class="absolute h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-500" style="animation: fill-timeline 5s linear forwards;"></div>
-                </div>
-                <!-- PREP4IISER -->
                 <div class="mb-12 relative">
-                    <div class="absolute -left-4 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white ring-8 ring-dark-bg">
+                    <div class="absolute -left-4 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white ring-8 ring-[#0a0a0a]">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <div class="glass-effect p-6 rounded-lg ml-8 glowing-card">
-                        <p class="text-sm text-gray-400">Nov 2024 - Present</p>
-                        <h3 class="text-2xl font-bold mt-1">Founder</h3>
+                        <p class="text-sm text-gray-400">Nov 2023 - Present</p>
+                        <h3 class="text-2xl font-bold mt-1">Founder & Mentor</h3>
                         <p class="text-lg font-semibold text-gray-300">PREP4IISER, India</p>
                     </div>
                 </div>
-                <!-- Photography Club -->
                 <div class="mb-12 relative">
-                    <div class="absolute -left-4 top-1 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white ring-8 ring-dark-bg">
+                    <div class="absolute -left-4 top-1 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white ring-8 ring-[#0a0a0a]">
                         <i class="fas fa-camera-retro"></i>
                     </div>
                     <div class="glass-effect p-6 rounded-lg ml-8 glowing-card">
-                        <p class="text-sm text-gray-400">Oct 2024 - Present</p>
+                        <p class="text-sm text-gray-400">Oct 2023 - Present</p>
                         <h3 class="text-2xl font-bold mt-1">Core Committee Member</h3>
                         <p class="text-lg font-semibold text-gray-300">Photography Club, IISER Bhopal</p>
                     </div>
@@ -300,17 +305,16 @@
             </div>
         </section>
 
-        <!-- Education Section -->
         <section id="education" class="mb-28 reveal">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold gradient-text-animated">Education</h2>
                 <p class="text-gray-400 mt-2">My academic background and qualifications.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg glowing-card">
                     <p class="text-sm text-gray-400">2023 - 2027</p>
                     <h3 class="text-xl font-bold mt-1">Bachelor of Science - BS</h3>
-                    <p class="text-md font-semibold text-blue-400">Chemical Engineering</p>
+                    <p class="text-md font-semibold text-blue-400">Chemical Engineering Science</p>
                     <p class="text-gray-300">IISER Bhopal</p>
                 </div>
                 <div class="glass-effect p-6 rounded-lg glowing-card">
@@ -319,36 +323,45 @@
                     <p class="text-md font-semibold text-blue-400">Computer Applications</p>
                     <p class="text-gray-300">Nalanda Open University, Patna</p>
                 </div>
+                <div class="glass-effect p-6 rounded-lg glowing-card lg:col-span-1 md:col-span-2">
+                    <p class="text-sm text-gray-400">2021 - 2023</p>
+                   <h3 class="text-xl font-bold mt-1">Cental School of Senior Secondary (Class XII)</h3>
+                   <p class="text-md font-semibold text-blue-400">Science Stream (PCM)</p>
+                   <p class="text-gray-300">Central Board of Secondary Education</p>
+               </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills" class="mb-28 reveal">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold gradient-text-animated">Core Competencies</h2>
                 <p class="text-gray-400 mt-2">Key skills and areas of expertise.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-4">
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Business Analysis</span>
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">C (Programming)</span>
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Leadership</span>
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Problem Solving</span>
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Project Execution</span>
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Communication</span>
-                <span class="glass-effect text-lg font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-white/20 cursor-default">Mentorship</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Python</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">C Programming</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Data Structures</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Web Development</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Business Analysis</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Strategic Planning</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Leadership</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Problem Solving</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Project Execution</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">EdTech</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Mentorship</span>
+                <span class="glass-effect skill-tag text-lg font-semibold py-2 px-5 rounded-full cursor-default">Public Speaking</span>
             </div>
         </section>
     </main>
 
-    <!-- Footer / Contact Section -->
     <footer id="contact" class="bg-black/30 text-white mt-20 reveal">
         <div class="container mx-auto px-6 py-12">
             <div class="text-center mb-10">
-                 <h2 class="text-4xl font-bold gradient-text-animated">Contact Me</h2>
-                 <p class="text-gray-400 mt-2">Feel free to reach out. Let's create something amazing!</p>
+                 <h2 class="text-4xl font-bold gradient-text-animated">Let's Connect</h2>
+                 <p class="text-gray-400 mt-2">Feel free to reach out. Let's create something amazing together!</p>
             </div>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
-                 <div class="flex items-center space-x-3 glass-effect py-3 px-5 rounded-lg">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                <div class="flex items-center space-x-3 glass-effect py-3 px-5 rounded-lg">
                     <i class="fas fa-envelope text-2xl text-blue-400"></i>
                     <a href="mailto:akshaytiwaari11@gmail.com" class="hover:text-blue-300 transition-colors">akshaytiwaari11@gmail.com</a>
                 </div>
@@ -356,13 +369,18 @@
                     <i class="fas fa-phone text-2xl text-blue-400"></i>
                     <span>9473096101</span>
                 </div>
+                 <div class="flex items-center space-x-3 glass-effect py-3 px-5 rounded-lg">
+                    <i class="fa-solid fa-wand-magic-sparkles text-2xl text-purple-400"></i>
+                    <a href="https://wa.me/918789472129" class="hover:text-purple-300 transition-colors">Have a query? Ask Me!</a>
+                </div>
             </div>
              <div class="flex justify-center space-x-6 mt-10">
-                <a href="https://www.linkedin.com/in/akshay-tiwari-8b17542b1" target="_blank" class="text-gray-400 hover:text-white text-3xl transition-transform duration-300 hover:scale-125"><i class="fab fa-linkedin"></i></a>
-                <a href="https://play.google.com/store/apps/details" target="_blank" class="text-gray-400 hover:text-white text-3xl transition-transform duration-300 hover:scale-125"><i class="fab fa-google-play"></i></a>
+                <a href="https://www.linkedin.com/in/akshay-tiwari-8b17542b1" target="_blank" aria-label="Visit my LinkedIn profile" class="text-gray-400 hover:text-white text-3xl transition-transform duration-300 hover:scale-125"><i class="fab fa-linkedin"></i></a>
+                
+                <a href="https://prep4iiser.com" target="_blank" aria-label="Visit the PREP4IISER website" class="text-gray-400 hover:text-white text-3xl transition-transform duration-300 hover:scale-125"><i class="fas fa-globe"></i></a>
             </div>
             <div class="text-center text-gray-500 mt-12 border-t border-white/10 pt-6">
-                <p>&copy; 2025 Akshay Tiwari. All rights reserved.</p>
+                <p>&copy; 2025 Akshay Tiwari. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -388,13 +406,10 @@
         let particlesArray;
 
         class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
+            constructor(x, y, directionX, directionY, size) {
+                this.x = x; this.y = y;
+                this.directionX = directionX; this.directionY = directionY;
                 this.size = size;
-                this.color = color;
             }
             draw() {
                 ctx.beginPath();
@@ -442,7 +457,7 @@
 
         // --- Typing Animation ---
         const heroTitle = document.getElementById('hero-title');
-        const textToType = "Founder @ PREP4IISER <br>& Science Undergraduate";
+        const textToType = "Founder, @PREP4IISER,<br>& Science Undergraduate";
         let charIndex = 0;
         function type() {
             if (charIndex < textToType.length) {
@@ -453,7 +468,7 @@
                     heroTitle.innerHTML += textToType.charAt(charIndex);
                     charIndex++;
                 }
-                setTimeout(type, 50);
+                setTimeout(type, 60);
             }
         }
         type();
@@ -475,10 +490,10 @@
                 const rect = item.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                item.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+                item.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px) scale(1.05)`;
             });
             item.addEventListener('mouseleave', function() {
-                item.style.transform = 'translate(0,0)';
+                item.style.transform = 'translate(0,0) scale(1)';
             });
         });
 
@@ -488,15 +503,15 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        document.querySelectorAll('#mobile-menu a, #header nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
         });
     });
     </script>
 </body>
 
-</html>
-<!-- partial -->
-  
-</body>
 </html>
